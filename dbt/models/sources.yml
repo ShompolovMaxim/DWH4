@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: postgres_master_data
+    database: postgres
+    schema: public
+    tables:
+      - name: bookings
+        identifier: postgres_public_bookings
+      - name: tickets
+        identifier: postgres_public_tickets
+      - name: airports
+        identifier: postgres_public_airports
+      - name: aircrafts
+        identifier: postgres_public_aircrafts
+      - name: flights
+        identifier: postgres_public_flights
+      - name: seats
+        identifier: postgres_public_seats
+      - name: ticket_flights
+        identifier: postgres_public_ticket_flights
+      - name: boarding_passes
+        identifier: postgres_public_boarding_passes

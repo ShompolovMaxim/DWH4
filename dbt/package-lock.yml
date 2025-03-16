@@ -1,0 +1,6 @@
+packages:
+  - git: https://github.com/kzzzr/dbtvault.git
+    revision: 8ee9ee882a9b3f3e4c334b38ef6460eafc12af06
+  - package: dbt-labs/dbt_utils
+    version: 1.3.0
+sha1_hash: af7de8a41ec33173aff1c295e713c97dfcd8b4fa

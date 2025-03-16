@@ -1,0 +1,17 @@
+config:
+  send_anonymous_usage_stats: False
+  use_colors: True
+  partial_parse: True
+
+dbtvault:
+  outputs:
+    dev:
+      type: postgres
+      dbname: postgres
+      schema: dwh_detailed
+      host: greenplum_dwh
+      port: 5432
+      user: gpadmin
+      password: gppass
+      
+  target: dev

@@ -1,0 +1,348 @@
+//Tables (based on the selection criteria)
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.aircrafts" {
+  "aircraft_code" "text"
+  "model" "jsonb"
+  "range" "integer"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.airports" {
+  "airport_code" "text"
+  "airport_name" "text"
+  "city" "text"
+  "coordinates_lon" "double precision"
+  "coordinates_lat" "double precision"
+  "timezone" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.boarding_passes" {
+  "ticket_no" "text"
+  "flight_id" "integer"
+  "boarding_no" "integer"
+  "seat_no" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.bookings" {
+  "book_ref" "text"
+  "book_date" "timestamp(6) with time zone"
+  "total_amount" "numeric(10,2)"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.flights" {
+  "flight_id" "integer"
+  "flight_no" "text"
+  "scheduled_departure" "timestamp(6) with time zone"
+  "scheduled_arrival" "timestamp(6) with time zone"
+  "departure_airport" "text"
+  "arrival_airport" "text"
+  "status" "text"
+  "aircraft_code" "text"
+  "actual_departure" "timestamp(6) with time zone"
+  "actual_arrival" "timestamp(6) with time zone"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.hub_aircrafts" {
+  "hub_aircrafts_key" "bytea"
+  "aircraft_code" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.hub_airports" {
+  "hub_airports_key" "bytea"
+  "airport_code" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.hub_bookings" {
+  "hub_bookings_key" "bytea"
+  "book_ref" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.hub_flights" {
+  "hub_flights_key" "bytea"
+  "flight_id" "integer"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.hub_seats" {
+  "hub_seats_key" "bytea"
+  "aircraft_code" "text"
+  "seat_no" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.hub_tickets" {
+  "hub_tickets_key" "bytea"
+  "ticket_no" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.link_flights_aircrafts" {
+  "link_flights_aircrafts_key" "bytea"
+  "hub_flights_key" "bytea"
+  "hub_aircrafts_key" "bytea"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.link_flights_arrival_airport" {
+  "link_flights_arrival_airport_key" "bytea"
+  "hub_flights_key" "bytea"
+  "arrival_airport_key" "bytea"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.link_flights_departure_airport" {
+  "link_flights_departure_airport_key" "bytea"
+  "hub_flights_key" "bytea"
+  "departure_airport_key" "bytea"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.link_seats_aircrafts" {
+  "link_seats_aircrafts_key" "bytea"
+  "hub_aircrafts_key" "bytea"
+  "hub_seats_key" "bytea"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.link_ticket_flights" {
+  "link_ticket_flights_key" "bytea"
+  "hub_tickets_key" "bytea"
+  "hub_flights_key" "bytea"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.link_tickets_bookings" {
+  "link_tickets_bookings_key" "bytea"
+  "ticket_no" "text"
+  "book_ref" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.sat_aircrafts_detail" {
+  "hub_aircrafts_key" "bytea"
+  "hashdiff" "bytea"
+  "model" "jsonb"
+  "range" "integer"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.sat_airports_detail" {
+  "hub_airports_key" "bytea"
+  "hashdiff" "bytea"
+  "airport_name" "text"
+  "city" "text"
+  "coordinates_lon" "double precision"
+  "coordinates_lat" "double precision"
+  "timezone" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.sat_bookings_detail" {
+  "hub_bookings_key" "bytea"
+  "hashdiff" "bytea"
+  "book_date" "timestamp(6) with time zone"
+  "total_amount" "numeric(10,2)"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.sat_flights_detail" {
+  "hub_flights_key" "bytea"
+  "hashdiff" "bytea"
+  "flight_no" "text"
+  "scheduled_departure" "timestamp(6) with time zone"
+  "scheduled_arrival" "timestamp(6) with time zone"
+  "status" "text"
+  "actual_departure" "timestamp(6) with time zone"
+  "actual_arrival" "timestamp(6) with time zone"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.sat_seats_detail" {
+  "hub_seats_key" "bytea"
+  "hashdiff" "bytea"
+  "fare_conditions" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.sat_ticket_flights_boarding_passes" {
+  "link_ticket_flights_key" "bytea"
+  "hashdiff" "bytea"
+  "boarding_no" "integer"
+  "seat_no" "text"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.sat_ticket_flights_detail" {
+  "link_ticket_flights_key" "bytea"
+  "hashdiff" "bytea"
+  "fare_conditions" "numeric(10,2)"
+  "amount" "numeric(10,2)"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.sat_tickets_detail" {
+  "hub_tickets_key" "bytea"
+  "hashdiff" "bytea"
+  "passenger_id" "text"
+  "passenger_name" "text"
+  "contact_data" "jsonb"
+  "load_dts" "timestamp without time zone"
+  "record_source" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.seats" {
+  "aircraft_code" "text"
+  "seat_no" "text"
+  "fare_conditions" "text"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.stg_aircrafts" {
+  "unknown" "unknown"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.stg_airports" {
+  "airport_code" "text"
+  "airport_name" "text"
+  "city" "text"
+  "coordinates_lon" "double precision"
+  "coordinates_lat" "double precision"
+  "timezone" "text"
+  "record_source" "text"
+  "hub_airports_key" "bytea"
+  "hashdiff" "bytea"
+  "load_dts" "timestamp without time zone"
+  "effective_from" "timestamp without time zone"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.stg_boarding_passes" {
+  "unknown" "unknown"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.stg_bookings" {
+  "unknown" "unknown"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.stg_flights" {
+  "unknown" "unknown"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.stg_seats" {
+  "unknown" "unknown"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.stg_ticket_flights" {
+  "unknown" "unknown"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.stg_tickets" {
+  "unknown" "unknown"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.ticket_flights" {
+  "ticket_no" "text"
+  "flight_id" "integer"
+  "fare_conditions" "numeric(10,2)"
+  "amount" "numeric(10,2)"
+
+  Note: ""
+}
+//--configured at schema: postgres.dwh_detailed
+Table "model.dbtvault.tickets" {
+  "ticket_no" "text"
+  "book_ref" "text"
+  "passenger_id" "text"
+  "passenger_name" "text"
+  "contact_data" "jsonb"
+
+  Note: ""
+}
+//Refs (based on the DBT Relationship Tests)

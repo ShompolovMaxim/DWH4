@@ -1,0 +1,1 @@
+SELECT * FROM "postgres"."public"."postgres_public_ticket_flights"
